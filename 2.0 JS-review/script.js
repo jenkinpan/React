@@ -144,14 +144,36 @@ function getBook(id) {
 }
 
 // * destructuring Object
-const book = getBook(2);
+const book = getBook(1);
 
-const { title, author, pages, genres } = book;
+const { title, author, pages, genres, publicationDate } = book;
 console.log(`${title} was written by ${author}, and it has ${pages} pages.`);
 
 genres;
 
 // * destructuring Array by array order from 0 to array.length
-const [firstGenre, secondGenre] = genres;
+// * get the rest property destructure by using rest operator
+const [firstGenre, secondGenre, ...otherGenres] = genres;
 
-console.log(firstGenre, secondGenre);
+console.log(firstGenre, secondGenre, otherGenres);
+
+// * spread operator
+// ! with the spread operator ..., it will take out the elements from an array and then put it into the new one.
+const newGenres = [...genres, "epic fantasy"];
+newGenres;
+
+// * use spread operator in an object
+const updateBook = {
+  ...book,
+  //Adding an new property for this object
+  moviePublicationDate: "2001-12-19",
+
+  // overwriting an exiting property
+  pages: 1210,
+};
+updateBook;
+
+const summary = `${title} is a ${pages}-pages long book, written by ${author}, and published in ${
+  publicationDate.split("-")[0]
+}`;
+summary;
