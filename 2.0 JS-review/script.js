@@ -143,8 +143,8 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-// destructing data
+// destructuring data
 const book = getBook(2);
 
-const { title, author } = book;
-console.log(title, author);
+const { title, author, pages } = book;
+console.log(`${title} was written by ${author}, and it has ${pages} pages.`);
