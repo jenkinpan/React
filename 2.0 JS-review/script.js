@@ -149,9 +149,9 @@ const book = getBook(2);
 const { title, author, pages, genres } = book;
 console.log(`${title} was written by ${author}, and it has ${pages} pages.`);
 
-genres
+genres;
 
-// * destructuring Array
+// * destructuring Array by array order from 0 to array.length
 const [firstGenre, secondGenre] = genres;
 
-console.log(firstGenre,secondGenre);
+console.log(firstGenre, secondGenre);
