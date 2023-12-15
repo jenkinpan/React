@@ -177,3 +177,5 @@ const summary = `${title} is a ${pages}-pages long book, written by ${author}, a
   publicationDate.split("-")[0]
 }`;
 summary;
+
+console.log(summary);
