@@ -2,7 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <div>
+      <h1>Hello World</h1>
+      <Pizza />
+    </div>
+  );
+}
+
+function Pizza() {
+  return <h2>Pizza</h2>;
 }
 
 // React v18
@@ -14,4 +23,4 @@ root.render(
 );
 
 // React before v18
-// React.render(<App />);
+// React.render(<App />, document.getElementById("root"));
