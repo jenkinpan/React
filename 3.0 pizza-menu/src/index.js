@@ -70,6 +70,9 @@ const Menu = () => {
 };
 
 const Footer = () => {
+  const hour = new Date().getHours();
+  console.log(hour);
+
   return (
     <footer>
       It is {new Date().toLocaleDateString} now, We're currently open!
