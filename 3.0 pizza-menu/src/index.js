@@ -73,6 +73,7 @@ const Menu = () => {
         name="Pizza Spinaci"
         ingredients="Tomato, mozarella, spinach, and ricotta cheese"
         photoName="pizzas/spinaci.jpg"
+        data={pizzaData}
       />
     </main>
   );
@@ -81,9 +82,9 @@ const Menu = () => {
 function Pizza(props) {
   return (
     <div>
-      <img src={props.photoName} alt="Pizza Spinaci" />
+      <img src={props.photoName} alt={props.name} />
       <h3>{props.name}</h3>
-      <p>{props.name}</p>
+      <p>{props.ingredients}</p>
     </div>
   );
 }
