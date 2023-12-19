@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -48,24 +49,28 @@ const pizzaData = [
 
 function App() {
   return (
-    <>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
-    </>
+    </div>
   );
 }
 
 const Header = () => {
-  return <h1>Fast React Pizza Co.</h1>;
+  return (
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
+  );
 };
 
 const Menu = () => {
   return (
-    <>
+    <main className="Menu">
       <h2>Our Menu</h2>
       <Pizza />
-    </>
+    </main>
   );
 };
 
@@ -73,13 +78,16 @@ const Footer = () => {
   const hour = new Date().getHours();
   const open = 12;
   const closed = 22;
+  const isOpen = hour >= open && hour <= closed;
+
+  console.log(isOpen);
 
   // * If the hour is less than the open time or greater than the closed time, then we're closed
-  if (hour >= open && hour <= closed) alert("We're currently open!");
-  else alert("We're currently closed!");
+  // if (hour >= open && hour <= closed) alert("We're currently open!");
+  // else alert("We're currently closed!");
 
   return (
-    <footer>
+    <footer className="footer">
       It is {new Date().toLocaleDateString} now, We're currently open!
     </footer>
   );
@@ -89,7 +97,7 @@ function Pizza() {
   return (
     <div>
       <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-      <h2>Pizza Spinaci</h2>
+      <h3>Pizza Spinaci</h3>
       <p>Tomato, mozarella, spinach, and ricotta cheese</p>
     </div>
   );
