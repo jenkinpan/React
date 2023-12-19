@@ -50,7 +50,7 @@ function App() {
   return (
     <>
       <Header />
-      <Pizza />
+      <Menu />
       <Footer />
     </>
   );
@@ -60,7 +60,14 @@ const Header = () => {
   return <h1>Fast React Pizza Co.</h1>;
 };
 
-const Menu = () => {};
+const Menu = () => {
+  return (
+    <>
+      <h2>Our Menu</h2>
+      <Pizza />
+    </>
+  );
+};
 
 const Footer = () => {
   return (
