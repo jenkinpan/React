@@ -71,7 +71,12 @@ const Menu = () => {
 
 const Footer = () => {
   const hour = new Date().getHours();
-  console.log(hour);
+  const open = 12;
+  const closed = 22;
+
+  // * If the hour is less than the open time or greater than the closed time, then we're closed
+  if (hour >= open && hour <= closed) alert("We're currently open!");
+  else alert("We're currently closed!");
 
   return (
     <footer>
