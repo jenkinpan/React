@@ -66,7 +66,7 @@ const Header = () => {
 
 const Menu = () => {
   return (
-    <main className="Menu">
+    <main className="menu">
       <h2>Our Menu</h2>
       <Pizza
         name="Pizza Spinaci"
@@ -94,10 +94,13 @@ Pizza.propTypes = {
 
 function Pizza(props) {
   return (
-    <div>
+    <div className="pizza">
       <img src={props.photoName} alt={props.name} />
-      <h3>{props.name}</h3>
-      <p>{props.ingredients}</p>
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
     </div>
   );
 }
