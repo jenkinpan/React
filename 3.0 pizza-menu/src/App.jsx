@@ -72,7 +72,14 @@ const Menu = () => {
         name="Pizza Spinaci"
         ingredients="Tomato, mozarella, spinach, and ricotta cheese"
         photoName="pizzas/spinaci.jpg"
-        data={pizzaData}
+        price="12"
+      />
+
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato, mozarella, mushrooms, and onion"
+        photoName="pizzas/funghi.jpg"
+        price="12"
       />
     </main>
   );
@@ -82,6 +89,7 @@ Pizza.propTypes = {
   photoName: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   ingredients: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 function Pizza(props) {
