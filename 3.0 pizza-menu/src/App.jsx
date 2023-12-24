@@ -65,21 +65,29 @@ const Header = () => {
 };
 
 const Menu = () => {
+  const pizzas = pizzaData;
+
+  const numOfPizzas = pizzas.length;
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
 
-      <div className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza
-            key={pizza.name}
-            name={pizza.name}
-            photoName={pizza.photoName}
-            price={pizza.price}
-            ingredients={pizza.ingredients}
-          />
-        ))}
-      </div>
+      {numOfPizzas > 0 ? (
+        <ul className="pizzas">
+          {pizzaData.map((pizza) => (
+            <Pizza
+              key={pizza.name}
+              name={pizza.name}
+              photoName={pizza.photoName}
+              price={pizza.price}
+              ingredients={pizza.ingredients}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p>We are still working for our menu, please come back later :)</p>
+      )}
     </main>
   );
 };
@@ -91,16 +99,16 @@ Pizza.propTypes = {
   price: PropTypes.number.isRequired,
 };
 
-function Pizza(props) {
+function Pizza({ photoName, name, ingredients, price }) {
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt={props.name} />
+    <li className="pizza">
+      <img src={photoName} alt={name} />
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price}</span>
+        <h3>{name}</h3>
+        <p>{ingredients}</p>
+        <span>{price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -118,7 +126,19 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      It is {new Date().toLocaleDateString()} now, We&apos;re currently open!
+      {isOpen ? (
+        <div className="order">
+          <p>
+            We&apos;re open in {open}:00 to {closed}:00. Come visit us or order
+            online.
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      ) : (
+        <p>
+          We&apos;re happy to welcome you between {open}:00 and {closed}:00.
+        </p>
+      )}
     </footer>
   );
 };
