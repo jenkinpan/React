@@ -35,7 +35,7 @@ function SkillList() {
       <Skill name="JavaScript" level="💪" color="#123456" />
       <Skill name="Python" level="👶" color="orangered" />
       <Skill name="HTML+CSS" level="💪" color="yellow" />
-      <Skill name="React" level="💪" color="orangered" />
+      <Skill name="React" level="💪" color="orange" />
       <Skill name="Vue" level="👶" color="lightblue" />
     </ul>
   );
