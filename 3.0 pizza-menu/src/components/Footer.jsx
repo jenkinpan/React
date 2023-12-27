@@ -1,6 +1,6 @@
 import { Order } from "./Order";
 
-function Footer() {
+export function Footer() {
   const hour = new Date().getHours();
   const open = 12;
   const closed = 22;
@@ -23,5 +23,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;
