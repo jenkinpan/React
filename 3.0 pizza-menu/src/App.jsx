@@ -81,6 +81,7 @@ const Menu = () => {
               photoName={pizza.photoName}
               price={pizza.price}
               ingredients={pizza.ingredients}
+              soldOut={pizza.soldOut}
             />
           ))}
         </ul>
@@ -96,9 +97,12 @@ Pizza.propTypes = {
   name: PropTypes.string.isRequired,
   ingredients: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  soldOut: PropTypes.bool.isRequired,
 };
 
-function Pizza({ photoName, name, ingredients, price }) {
+function Pizza({ photoName, name, ingredients, price, soldOut }) {
+  if (soldOut) return null;
+
   return (
     <li className="pizza">
       <img src={photoName} alt={name} />
@@ -126,13 +130,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>
-            We&apos;re open in {open}:00 to {closed}:00. Come visit us or order
-            online.
-          </p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closed={closed} />
       ) : (
         <p>
           We&apos;re happy to welcome you between {open}:00 and {closed}:00.
@@ -141,5 +139,21 @@ const Footer = () => {
     </footer>
   );
 };
+
+Order.propTypes = {
+  closed: PropTypes.number.isRequired,
+};
+
+function Order({ closed }) {
+  return (
+    <div className="order">
+      <p>
+        We&apos;re currently open until {closed}:00. Come visit us or order
+        online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
+}
 
 export default App;
