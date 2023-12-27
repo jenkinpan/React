@@ -56,15 +56,15 @@ function App() {
   );
 }
 
-const Header = () => {
+function Header() {
   return (
     <header className="header">
       <h1>Fast React Pizza Co.</h1>
     </header>
   );
-};
+}
 
-const Menu = () => {
+function Menu() {
   const pizzas = pizzaData;
   const numOfPizzas = pizzas.length;
 
@@ -75,14 +75,7 @@ const Menu = () => {
       {numOfPizzas > 0 ? (
         <ul className="pizzas">
           {pizzaData.map((pizza) => (
-            <Pizza
-              key={pizza.name}
-              name={pizza.name}
-              photoName={pizza.photoName}
-              price={pizza.price}
-              ingredients={pizza.ingredients}
-              soldOut={pizza.soldOut}
-            />
+            <Pizza key={pizza.name} pizzaObj={pizza} />
           ))}
         </ul>
       ) : (
@@ -90,32 +83,34 @@ const Menu = () => {
       )}
     </main>
   );
-};
+}
 
 Pizza.propTypes = {
-  photoName: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  ingredients: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  soldOut: PropTypes.bool.isRequired,
+  pizzaObj: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    ingredients: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    photoName: PropTypes.string.isRequired,
+    soldOut: PropTypes.bool.isRequired,
+  }),
 };
 
-function Pizza({ photoName, name, ingredients, price, soldOut }) {
-  if (soldOut) return null;
+function Pizza({ pizzaObj }) {
+  if (pizzaObj.soldOut) return null;
 
   return (
     <li className="pizza">
-      <img src={photoName} alt={name} />
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h3>{name}</h3>
-        <p>{ingredients}</p>
-        <span>{price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}</span>
       </div>
     </li>
   );
 }
 
-const Footer = () => {
+function Footer() {
   const hour = new Date().getHours();
   const open = 12;
   const closed = 22;
@@ -126,7 +121,6 @@ const Footer = () => {
   // * If the hour is less than the open time or greater than the closed time, then we're closed
   // if (hour >= open && hour <= closed) alert("We're currently open!");
   // else alert("We're currently closed!");
-
   return (
     <footer className="footer">
       {isOpen ? (
@@ -138,7 +132,7 @@ const Footer = () => {
       )}
     </footer>
   );
-};
+}
 
 Order.propTypes = {
   closed: PropTypes.number.isRequired,
