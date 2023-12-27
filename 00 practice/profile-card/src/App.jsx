@@ -1,6 +1,34 @@
 import PropTypes from "prop-types";
 import "./App.css";
 
+const skills = [
+  {
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#123456",
+  },
+  {
+    skill: "Python",
+    level: "intermediate",
+    color: "orangered",
+  },
+  {
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "yellow",
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "orange",
+  },
+  {
+    skill: "Vue",
+    level: "beginner",
+    color: "lightblue",
+  },
+];
+
 function App() {
   return (
     <div className="card">
@@ -32,11 +60,14 @@ function Intro() {
 function SkillList() {
   return (
     <ul className="skill-list">
-      <Skill name="JavaScript" level="💪" color="#123456" />
-      <Skill name="Python" level="👶" color="orangered" />
-      <Skill name="HTML+CSS" level="💪" color="yellow" />
-      <Skill name="React" level="💪" color="orange" />
-      <Skill name="Vue" level="👶" color="lightblue" />
+      {skills.map((skill) => (
+        <Skill
+          key={skill.skill}
+          name={skill.skill}
+          level={skill.level}
+          color={skill.color}
+        />
+      ))}
     </ul>
   );
 }
@@ -47,11 +78,15 @@ Skill.propTypes = {
   color: PropTypes.string.isRequired,
 };
 
-function Skill(props) {
+function Skill({ name, level, color }) {
   return (
-    <li className="skill" style={{ backgroundColor: props.color }}>
-      {props.name}
-      <span>{props.level}</span>
+    <li className="skill" style={{ backgroundColor: color }}>
+      {name}
+      <span>
+        {level === "beginner" && "👶"}
+        {level === "intermediate" && "🤓"}
+        {level === "advanced" && "💪"}
+      </span>
     </li>
   );
 }
