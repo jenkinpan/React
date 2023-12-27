@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import "./App.css";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 const pizzaData = [
   {
@@ -56,14 +58,6 @@ function App() {
   );
 }
 
-function Header() {
-  return (
-    <header className="header">
-      <h1>Fast React Pizza Co.</h1>
-    </header>
-  );
-}
-
 function Menu() {
   const pizzas = pizzaData;
   const numOfPizzas = pizzas.length;
@@ -106,7 +100,7 @@ function Pizza({ pizzaObj }) {
   // if (pizzaObj.soldOut) return null;
 
   return (
-    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : "" }`}>
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
         <h3>{pizzaObj.name}</h3>
@@ -117,35 +111,11 @@ function Pizza({ pizzaObj }) {
   );
 }
 
-function Footer() {
-  const hour = new Date().getHours();
-  const open = 12;
-  const closed = 22;
-  const isOpen = hour >= open && hour <= closed;
-
-  console.log(isOpen);
-
-  // * If the hour is less than the open time or greater than the closed time, then we're closed
-  // if (hour >= open && hour <= closed) alert("We're currently open!");
-  // else alert("We're currently closed!");
-  return (
-    <footer className="footer">
-      {isOpen ? (
-        <Order closed={closed} />
-      ) : (
-        <p>
-          We&apos;re happy to welcome you between {open}:00 and {closed}:00.
-        </p>
-      )}
-    </footer>
-  );
-}
-
 Order.propTypes = {
   closed: PropTypes.number.isRequired,
 };
 
-function Order({ closed }) {
+export function Order({ closed }) {
   return (
     <div className="order">
       <p>
