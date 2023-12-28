@@ -8,17 +8,31 @@ function App() {
   const date = new Date();
   date.setDate(date.getDate() + count);
 
+  function handleReset() {
+    setCount(0);
+    setStep(1);
+  }
+
   return (
     <>
       <div>
-        <button onClick={() => setStep((s) => s - 1)}>-</button>
-        <span>Step:{step}</span>
-        <button onClick={() => setStep((s) => s + 1)}>+</button>
+        <input
+          type="range"
+          max={10}
+          min={1}
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+        <span>{step}</span>
       </div>
 
       <div>
         <button onClick={() => setCount((c) => c - step)}>-</button>
-        <span>Count:{count}</span>
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => setCount(Number(e.target.value))}
+        />
         <button onClick={() => setCount((c) => c + step)}>+</button>
       </div>
 
@@ -32,6 +46,10 @@ function App() {
         </span>
         <span>{date.toDateString()}</span>
       </p>
+
+      {step > 1 || count !== 0 ? (
+        <button onClick={handleReset}>Reset</button>
+      ) : null}
     </>
   );
 }
