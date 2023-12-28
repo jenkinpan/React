@@ -1,32 +1,38 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
+    </div>
+  );
 }
 
-export default App
+function Logo() {
+  return <h1>🌴 Far Away ✈️</h1>;
+}
+
+function Form() {
+  return (
+    <div className="add-form">
+      <h3>What do you need for your 😉 trip?</h3>
+    </div>
+  );
+}
+
+function PackingList() {
+  return <div className="list">List</div>;
+}
+
+function Stats() {
+  return (
+    <footer className="stats">
+      💼You have X items on your list, and you have already packed X (X%).
+    </footer>
+  );
+}
+
+export default App;
