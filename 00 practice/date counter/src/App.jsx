@@ -18,8 +18,8 @@ function App() {
       <div>
         <input
           type="range"
-          max={10}
-          min={1}
+          max="10"
+          min="0"
           value={step}
           onChange={(e) => setStep(Number(e.target.value))}
         />
@@ -29,9 +29,9 @@ function App() {
       <div>
         <button onClick={() => setCount((c) => c - step)}>-</button>
         <input
-          type="text"
+          type="number"
           value={count}
-          onChange={(e) => setCount(Number(e.target.value))}
+          onChange={(e) => setCount(e.target.value)}
         />
         <button onClick={() => setCount((c) => c + step)}>+</button>
       </div>
@@ -47,7 +47,7 @@ function App() {
         <span>{date.toDateString()}</span>
       </p>
 
-      {step > 1 || count !== 0 ? (
+      {step !== 1 || count !== 0 ? (
         <button onClick={handleReset}>Reset</button>
       ) : null}
     </>
