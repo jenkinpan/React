@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
@@ -22,6 +23,11 @@ function App() {
 function Logo() {
   return <h1>🌴 Far Away ✈️</h1>;
 }
+
+Form.propTypes = {
+  items: PropTypes.array.isRequired,
+  setItems: PropTypes.func.isRequired,
+};
 
 function Form({ items, setItems }) {
   const [description, setDescription] = useState("");
@@ -69,6 +75,10 @@ function Form({ items, setItems }) {
   );
 }
 
+PackingList.propTypes = {
+  items: PropTypes.array.isRequired,
+};
+
 function PackingList({ items }) {
   return (
     <div className="list">
@@ -80,6 +90,10 @@ function PackingList({ items }) {
     </div>
   );
 }
+
+Item.propTypes = {
+  item: PropTypes.object.isRequired,
+};
 
 function Item({ item }) {
   return (
