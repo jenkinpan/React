@@ -1,6 +1,15 @@
 import "./App.css";
 
-function App() {}
+function App() {
+  return (
+    <main>
+      <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
+    </main>
+  );
+}
 
 function Logo() {
   return <h1>🌴Far Away✈️</h1>;
