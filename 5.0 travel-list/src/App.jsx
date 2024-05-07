@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 const initialItems = [
@@ -22,6 +23,9 @@ function Logo() {
 }
 
 function Form() {
+  const [description, setdescription] = useState("");
+  const [quantity, setQuantity] = useState(1);
+
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -29,18 +33,24 @@ function Form() {
   return (
     <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your trip?</h3>
-      <select>
+      <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
         {Array.from({ length: 20 }, (_, i) => i + 1).map((i) => (
           <option value={i} key={i}>
             {i}
           </option>
         ))}
       </select>
-      <input type="text" placeholder="Item..." />
+      <input
+        type="text"
+        placeholder="Item..."
+        value={description}
+        onChange={(e) => setdescription(e.target.value)}
+      />
       <button>Add</button>
     </form>
   );
 }
+
 function PackingList() {
   return (
     <div className="list">
