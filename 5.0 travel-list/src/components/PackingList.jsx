@@ -9,12 +9,7 @@ PackingList.propTypes = {
   onClearList: PropTypes.func.isRequired,
 };
 
-export default function PackingList({
-  items,
-  onDeleteItem,
-  onToggleItem,
-  onClearList,
-}) {
+function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
   const [sortBy, setSortBy] = useState("input");
 
   let sortedItems;
@@ -58,3 +53,5 @@ export default function PackingList({
     </div>
   );
 }
+
+export default PackingList;

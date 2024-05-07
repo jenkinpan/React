@@ -6,7 +6,7 @@ Item.propTypes = {
   onToggleItem: PropTypes.func.isRequired,
 };
 
-export default function Item({ item, onDeleteItem, onToggleItem }) {
+function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <li>
       <input
@@ -21,3 +21,5 @@ export default function Item({ item, onDeleteItem, onToggleItem }) {
     </li>
   );
 }
+
+export default Item;

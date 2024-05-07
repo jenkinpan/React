@@ -4,7 +4,7 @@ Form.propTypes = {
   onAddItems: PropTypes.func.isRequired,
 };
 
-export default function Form({ onAddItems }) {
+function Form({ onAddItems }) {
   const [description, setdescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
@@ -46,3 +46,5 @@ export default function Form({ onAddItems }) {
     </form>
   );
 }
+
+export default Form;

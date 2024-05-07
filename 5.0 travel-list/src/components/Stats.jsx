@@ -4,7 +4,7 @@ Stats.propTypes = {
   items: PropTypes.array.isRequired,
 };
 
-export default function Stats({ items }) {
+function Stats({ items }) {
   if (!items.length) {
     return (
       <footer className="stats">
@@ -27,3 +27,5 @@ export default function Stats({ items }) {
     </footer>
   );
 }
+
+export default Stats;
