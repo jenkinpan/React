@@ -1,5 +1,5 @@
-import Button from "./Button";
 import { useState } from "react";
+import Button from "./Button";
 
 function ListBox({ movies }) {
   const [isOpen1, setIsOpen1] = useState(true);
