@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const tempMovieData = [
   {
@@ -74,6 +75,10 @@ function App() {
   );
 }
 
+Navbar.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 function Navbar({ children }) {
   return <nav className="nav-bar">{children}</nav>;
 }
@@ -102,6 +107,10 @@ function Search() {
   );
 }
 
+NumResults.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
+
 function NumResults({ movies }) {
   return (
     <p className="num-results">
@@ -110,9 +119,17 @@ function NumResults({ movies }) {
   );
 }
 
+Main.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 function Main({ children }) {
   return <main className="main">{children} </main>;
 }
+
+Box.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 function Box({ children }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -127,6 +144,10 @@ function Box({ children }) {
   );
 }
 
+MovieList.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
+
 function MovieList({ movies }) {
   return (
     <ul className="list">
@@ -136,6 +157,10 @@ function MovieList({ movies }) {
     </ul>
   );
 }
+
+Movie.propTypes = {
+  movie: PropTypes.object.isRequired,
+};
 
 function Movie({ movie }) {
   return (
@@ -151,6 +176,10 @@ function Movie({ movie }) {
     </li>
   );
 }
+
+WatchedSummary.propTypes = {
+  watched: PropTypes.array.isRequired,
+};
 
 function WatchedSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
@@ -181,6 +210,10 @@ function WatchedSummary({ watched }) {
     </div>
   );
 }
+
+WatchedMovieList.propTypes = {
+  watched: PropTypes.array.isRequired,
+};
 
 function WatchedMovieList({ watched }) {
   return (
